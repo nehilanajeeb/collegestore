@@ -1,0 +1,21 @@
+{% extends 'book/main.html' %}
+{% load static%}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="{% static 'images/order.png' %}" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">order confirmed</h5>
+
+    <a href="{% url 'home' %}" class="btn btn-primary">Go to home</a>
+  </div>
+</div>
+
+</body>
+</html>{% endblock %}

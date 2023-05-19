@@ -1,0 +1,95 @@
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<form method="post" action="{% url 'addform' %}">
+    {% csrf_token %}
+
+        <p>
+            <label>Name : <input type="text" /></label>
+        </p>
+
+        <p>
+            <label>DOB : <input type="text" /></label>
+        </p>
+    <p>
+            <label>Age : <input type="text" /></label>
+        </p>
+<p>
+            <label>Gender :<label >Male:</label> <input type="checkbox"  value="Male">
+               <label >Female:</label>  <input type="checkbox"  value="Female">
+        </p>
+    <p>
+            <label> Phone : <input type="text" /></label>
+        </p>
+    <p>
+            <label> Email : <input type="text" /></label>
+        </p>
+    <p>
+            <label> Address : <input type="textarea" /></label>
+        </p>
+
+<p>
+    <label> Department:</label>
+
+ <select name="dept" id="department" class="form-control">
+            <option value="0">--Select Department--</option>
+            {% for item in r1  %}
+            <option value="{{ item.id }}">{{ item.name }}</option>
+            {% endfor %}
+        </select></p>
+    <br/>
+   <p>
+    <label> Course:</label>
+        <select name="emp" id="Employee" class="form-control">
+            <option value="0">--Select course--</option>
+            {% for item in r1  %}
+            <option value="{{ item.id }}">{{ item.course }}</option>
+            {% endfor %}
+        </select></p>
+        <script>
+
+$(document).ready(function(){
+
+ var department = $("#department");
+ var Employee = $("#Employee");
+ var $options = Employee.find('option');
+ department.on('change',function(){
+    Employee.html($options.filter('[value="'+ this.value  +'"]'));
+ }).trigger('change');
+
+
+});
+</script>
+    <p>
+        <label >Purpose:</label>
+
+<select >
+  <option>For Enquiry</option>
+     <option>Place order</option>
+     <option>Return order</option>
+
+</select>
+    </p>
+    <p>
+            <label>Materials Provide :<label >Notebook:</label> <input type="checkbox"  value="Notebook">
+              <label >Pen:</label>   <input type="checkbox"  value="Pen">
+               <label >Paper:</label> <input type="checkbox"  value="Paper">
+        </p>
+        <p>
+            <button type="submit">Submit</button>
+        </p>
+
+    </form>
+</body>
+</html>
+{% endblock %}

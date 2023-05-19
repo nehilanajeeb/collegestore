@@ -1,0 +1,23 @@
+{% extends 'book/main.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        {% for i in r %}
+        <div class="col-md-3" >
+     <div class="card" >
+
+  <div class="card-body">
+    <h5 class="card-title">{{i.name}}</h5>
+    <p class="card-text">{{i.desc}}</p>
+     <p class="card-text"> Courses are: <li>{{i.course}}</li></p>
+  </div>
+</div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
